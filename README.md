@@ -4,7 +4,6 @@
 
 stratum-sdk-go is a sdk for use operation in Stratum.hk cryptocurrency transactions
 
-https://github.com/99xTech/stratum-sdk-go/wiki
 
 ## How to install:
 
