@@ -1,0 +1,63 @@
+package stratumsdk
+
+import (
+	"encoding/json"
+
+	"github.com/99xTech/stratum-sdk-go/stratumclient"
+)
+
+const (
+	StatusOK   = stratumclient.StatusOK
+	StatusFAIL = stratumclient.StatusFAIL
+)
+
+type ApiError struct {
+	stratumclient.Result
+}
+
+type apiClient struct {
+	conn *stratumclient.StratumClient
+}
+
+const (
+	envProducation = "https://dev.stratum.global/api/"
+	envSandbox     = "https://dev.stratum.global/api/"
+)
+
+//Initial - create a initial instance the sdk
+func Initial(apiUser string, apiKey string, sandbox bool) *apiClient {
+	client := &apiClient{
+		conn: stratumclient.New(apiUser, apiKey),
+	}
+	if sandbox {
+		client.conn.SetEndpoint(envSandbox)
+	} else {
+		client.conn.SetEndpoint(envProducation)
+	}
+	return client
+}
+
+// call a apiClient request
+func (c *apiClient) call(module string, action string, payload []byte, target interface{}) (*ApiError, error) {
+	apiErr := new(ApiError)
+
+	apires, err := c.conn.CallRestApi(module, action, payload, false)
+	if err != nil {
+		return nil, err
+	}
+
+	//fmt.Printf("%s", apires.Raw)
+	if err = json.Unmarshal(apires.Raw, apiErr); err != nil {
+		return nil, err
+	}
+	if apiErr.Status != StatusOK {
+		return apiErr, nil
+	}
+	if target == nil {
+		return nil, nil
+	}
+	if err = json.Unmarshal(apires.Raw, target); err != nil {
+		return nil, err
+	}
+	return nil, nil
+}
