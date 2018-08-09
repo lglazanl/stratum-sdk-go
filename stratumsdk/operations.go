@@ -6,7 +6,7 @@ import (
 )
 
 type Operations struct {
-	client *apiClient
+	client *ApiClient
 }
 
 type FeeData struct {
@@ -59,7 +59,7 @@ type FeeResult struct {
 	Data []FeeData `json:"data"`
 }
 
-func (c *apiClient) Operations() *Operations {
+func (c *ApiClient) Operations() *Operations {
 	return &Operations{client: c}
 }
 

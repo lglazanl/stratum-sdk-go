@@ -6,7 +6,7 @@ import (
 
 // Withdraws strcture for consumer widthdraws
 type Withdraws struct {
-	client *apiClient
+	client *ApiClient
 }
 
 type WithdrawsData struct {
@@ -30,7 +30,7 @@ type WithdrawsResult struct {
 	Data WithdrawsData `json:"data"`
 }
 
-func (c *apiClient) Withdraws() *Withdraws {
+func (c *ApiClient) Withdraws() *Withdraws {
 	return &Withdraws{client: c}
 }
 

@@ -50,11 +50,11 @@ type WalletResult struct {
 }
 
 type Wallets struct {
-	client *apiClient
+	client *ApiClient
 }
 
 // attach module to apiclient
-func (c *apiClient) Wallets() *Wallets {
+func (c *ApiClient) Wallets() *Wallets {
 	return &Wallets{client: c}
 }
 

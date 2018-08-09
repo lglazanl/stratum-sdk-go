@@ -15,7 +15,7 @@ type WalletGroupData struct {
 }
 
 type WalletGroup struct {
-	client *apiClient
+	client *ApiClient
 }
 
 type WalletGroupListResult struct {
@@ -26,7 +26,7 @@ type WalletGroupResult struct {
 	Data WalletGroupData `json:"data"`
 }
 
-func (c *apiClient) WalletGroup() *WalletGroup {
+func (c *ApiClient) WalletGroup() *WalletGroup {
 	return &WalletGroup{client: c}
 }
 

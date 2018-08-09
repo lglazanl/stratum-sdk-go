@@ -36,11 +36,11 @@ type WalletAddressesResult struct {
 
 // WalletsAddresses is a structure create a structure
 type WalletsAddresses struct {
-	client *apiClient
+	client *ApiClient
 }
 
 //WalletsAddresses - Create a new instance struct
-func (c *apiClient) WalletsAddresses() *WalletsAddresses {
+func (c *ApiClient) WalletsAddresses() *WalletsAddresses {
 	return &WalletsAddresses{client: c}
 }
 

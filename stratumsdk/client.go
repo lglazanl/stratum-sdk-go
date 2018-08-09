@@ -15,7 +15,7 @@ type ApiError struct {
 	stratumclient.Result
 }
 
-type apiClient struct {
+type ApiClient struct {
 	conn *stratumclient.StratumClient
 }
 
@@ -25,8 +25,8 @@ const (
 )
 
 //Initial - create a initial instance the sdk
-func Initial(apiUser string, apiKey string, sandbox bool) *apiClient {
-	client := &apiClient{
+func Initial(apiUser string, apiKey string, sandbox bool) *ApiClient {
+	client := &ApiClient{
 		conn: stratumclient.New(apiUser, apiKey),
 	}
 	if sandbox {
@@ -37,8 +37,8 @@ func Initial(apiUser string, apiKey string, sandbox bool) *apiClient {
 	return client
 }
 
-// call a apiClient request
-func (c *apiClient) call(module string, action string, payload []byte, target interface{}) (*ApiError, error) {
+// call a ApiClient request
+func (c *ApiClient) call(module string, action string, payload []byte, target interface{}) (*ApiError, error) {
 	apiErr := new(ApiError)
 
 	apires, err := c.conn.CallRestApi(module, action, payload, false)

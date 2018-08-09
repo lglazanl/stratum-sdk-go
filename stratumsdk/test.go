@@ -4,7 +4,7 @@ import "github.com/99xTech/stratum-sdk-go/stratumclient"
 
 // Test api resource Client
 type Test struct {
-	Client *apiClient
+	Client *ApiClient
 }
 
 type PingData struct {
@@ -25,7 +25,7 @@ type TimeResult struct {
 	Data TimeData `json"time"`
 }
 
-func (c *apiClient) Test() *Test {
+func (c *ApiClient) Test() *Test {
 	return &Test{Client: c}
 }
 
