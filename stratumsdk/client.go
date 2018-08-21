@@ -3,7 +3,7 @@ package stratumsdk
 import (
 	"encoding/json"
 
-	"github.com/99xTech/stratum-sdk-go/stratumclient"
+	"github.com/rafaeltokyo/stratum-sdk-go/stratumclient"
 )
 
 const (

@@ -3,7 +3,7 @@ package stratumsdk_test
 import (
 	"testing"
 
-	"github.com/99xTech/stratum-sdk-go/stratumsdk"
+	"github.com/rafaeltokyo/stratum-sdk-go/stratumsdk"
 )
 
 func TestWalletGroupCreate(t *testing.T) {
