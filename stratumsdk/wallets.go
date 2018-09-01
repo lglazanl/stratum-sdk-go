@@ -5,13 +5,13 @@ import (
 )
 
 type WalletData struct {
-	WalletId           int64   `json:"wallet_id"`
-	WalletEid          int64   `json:"wallet_eid"`
+	WalletId           int     `json:"wallet_id"`
+	WalletEid          int     `json:"wallet_eid"`
 	WalletLabel        string  `json:"wallet_label"`
 	WalletBalance      float64 `json:"wallet_balance"`
-	WalletGroupId      int64   `json:"wallet_group_id"`
+	WalletGroupId      int     `json:"wallet_group_id"`
 	WalletGroupLabel   string  `json:"wallet_group_label"`
-	WalletGroupEid     int64   `json:"wallet_group_eid"`
+	WalletGroupEid     int     `json:"wallet_group_eid"`
 	WalletType         string  `json:"wallet_type"`
 	CurrencyName       string  `json:"currency_name"`
 	Currency           string  `json:"currency"`
@@ -22,11 +22,11 @@ type WalletData struct {
 }
 
 type WalletsListPayload struct {
-	WalletEid        int64   `json:"wallet_eid"`
+	WalletEid        int     `json:"wallet_eid"`
 	WalletBalanceMin float64 `json:"wallet_balance_min"`
 	WalletBalanceMax float64 `json:"wallet_balance_max"`
-	WalletGroupEid   int64   `json:"wallet_group_eid"`
-	WalletGroupId    int64   `json:"wallet_group_id"`
+	WalletGroupEid   int     `json:"wallet_group_eid"`
+	WalletGroupId    int     `json:"wallet_group_id"`
 	WalletType       string  `json:"wallet_type"`
 	Currency         string  `json:"currency"`
 	CurrencyType     string  `json:"currency_type"`
@@ -34,11 +34,11 @@ type WalletsListPayload struct {
 
 type WalletPayload struct {
 	Currency      string `json:"currency"`
-	WalletEid     int64  `json:"wallet_eid"`
-	WalletGroupId int64  `json:"wallet_group_id"`
+	WalletEid     int    `json:"wallet_eid"`
+	WalletGroupId int    `json:"wallet_group_id"`
 	WalletLabel   string `json:"wallet_label"`
 	WalletType    string `json:"wallet_type"`
-	WalletId      int64  `json:"wallet_id"`
+	WalletId      int    `json:"wallet_id"`
 }
 
 // Success reply from a list action

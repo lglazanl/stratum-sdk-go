@@ -6,21 +6,21 @@ import (
 
 type WalletAddressData struct {
 	WalletAddressEid   int    `json:"wallet_address_eid"`
-	WalletId           int64  `json:"wallet_id"`
+	WalletId           int    `json:"wallet_id"`
 	WalletAddressLabel string `json:"wallet_address_label"`
 	WalletAddress      string `json:"wallet_address"`
 }
 
 type WalletsAddressesListPayload struct {
 	WalletAddressEid string `json:"wallet_address_eid"`
-	WalletId         int64  `json:"wallet_id"`
-	WalletEid        int64  `json:"wallet_eid"`
+	WalletId         int    `json:"wallet_id"`
+	WalletEid        int    `json:"wallet_eid"`
 	Currency         string `json:"currency"`
 }
 
 type WalletAddressesPayload struct {
 	WalletAddressEid   int    `json:"wallet_address_eid"`
-	WalletId           int64  `json:"wallet_id"`
+	WalletId           int    `json:"wallet_id"`
 	WalletAddressLabel string `json:"wallet_address_label"`
 	WalletAddress      string `json:"wallet_address"`
 	Currency           string `json:"currency"`
