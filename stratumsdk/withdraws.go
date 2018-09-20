@@ -14,16 +14,16 @@ type WithdrawsData struct {
 	OperationAmount float64 `json:"operation_amount"`
 	OperationDesc   string  `json:"operation_amount"`
 	OperationEid    int     `json:"operation_eid"`
-	OperationOtp    int     `json:"operation_otp"`
-	WalletId        int     `json:"walletId"`
+	OperationOtp    string  `json:"operation_otp"`
+	WalletId        int     `json:"wallet_id"`
 }
 type WithdrawsPayload struct {
 	DestAddress     string  `json:"dest_address"`
 	OperationAmount float64 `json:"operation_amount"`
 	OperationDesc   string  `json:"operation_amount"`
 	OperationEid    int     `json:"operation_eid"`
-	OperationOtp    int     `json:"operation_otp"`
-	WalletId        int     `json:"walletId"`
+	OperationOtp    string  `json:"operation_otp"`
+	WalletId        int     `json:"wallet_id"`
 }
 
 type WithdrawsResult struct {
