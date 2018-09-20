@@ -16,6 +16,7 @@ type WithdrawsData struct {
 	OperationEid    int     `json:"operation_eid"`
 	OperationOtp    string  `json:"operation_otp"`
 	WalletId        int     `json:"wallet_id"`
+
 }
 type WithdrawsPayload struct {
 	DestAddress     string  `json:"dest_address"`
