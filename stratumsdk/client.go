@@ -20,8 +20,8 @@ type ApiClient struct {
 }
 
 const (
-	envProducation = "https://dev.stratum.global/api/"
-	envSandbox     = "https://dev.stratum.global/api/"
+	envProduction = "https://stratum.global/api/"
+	envSandbox    = "https://dev.stratum.global/api/"
 )
 
 //Initial - create a initial instance the sdk
@@ -32,7 +32,7 @@ func Initial(apiUser string, apiKey string, sandbox bool) *ApiClient {
 	if sandbox {
 		client.conn.SetEndpoint(envSandbox)
 	} else {
-		client.conn.SetEndpoint(envProducation)
+		client.conn.SetEndpoint(envProduction)
 	}
 	return client
 }
