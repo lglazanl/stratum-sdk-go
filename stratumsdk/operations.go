@@ -17,23 +17,23 @@ type FeeData struct {
 }
 
 type OperationData struct {
-	WalletID                  int    `json:"wallet_id"`
-	OperationID               int    `json:"operation_id"`
-	OperationAmount           int    `json:"operation_amount"`
-	OperationTotalAmount      int    `json:"operation_tamount"`
-	OperationFee              int    `json:"operation_fee"`
-	OperationDescription      string `json:"operation_desc"`
-	OperationExternalID       int    `json:"operation_eid"`
-	OperationExternalTXID     int    `json:"operation_etxid"`
-	OperationTimestamp        int    `json:"operation_ts"`
-	OperationUpdatedTimestamp int    `json:"operation_upd_ts"`
-	OperationConfirmations    int    `json:"operation_conf"`
-	OperationConfRequired     int    `json:"operation_confreq"`
-	DestinationTypeData       string `json:"dest_type_data"`
-	OperationInfo             string `json:"operation_info"`
-	OperationStatus           string `json:"operation_status"`
-	OperationType             string `json:"operation_type"`
-	DirectionType             string `json:"direction_type"`
+	WalletID                  int     `json:"wallet_id"`
+	OperationID               int     `json:"operation_id"`
+	OperationAmount           float64 `json:"operation_amount"`
+	OperationTotalAmount      float64 `json:"operation_tamount"`
+	OperationFee              float64 `json:"operation_fee"`
+	OperationDescription      string  `json:"operation_desc"`
+	OperationExternalID       int     `json:"operation_eid"`
+	OperationExternalTXID     int     `json:"operation_etxid"`
+	OperationTimestamp        int     `json:"operation_ts"`
+	OperationUpdatedTimestamp int     `json:"operation_upd_ts"`
+	OperationConfirmations    int     `json:"operation_conf"`
+	OperationConfRequired     int     `json:"operation_confreq"`
+	DestinationTypeData       string  `json:"dest_type_data"`
+	OperationInfo             string  `json:"operation_info"`
+	OperationStatus           string  `json:"operation_status"`
+	OperationType             string  `json:"operation_type"`
+	DirectionType             string  `json:"direction_type"`
 }
 type OperationPayload struct {
 	DestType           string `json:"dest_type,omitempty"`      // types: in,out,intra
