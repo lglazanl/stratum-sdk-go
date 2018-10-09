@@ -17,18 +17,23 @@ type FeeData struct {
 }
 
 type OperationData struct {
-	DestType           string `json:"dest_type"`      // types: in,out,intra
-	DirectionType      string `json:"direction_type"` //types in,out,intra
-	OperationEid       int    `json:"operation_eid"`
-	OperationStatus    string `json:"operation_status"`      // new,processing,done,failed
-	OperationTsFrom    int    `json:"operation_ts_from"`     //  doubt ask for Sven
-	OperationTsTo      int    `json:"operation_ts_to"`       // doubt ask for Sven
-	OperationType      string `json:"operation_type"`        // types: deposit,withdraw,transfer"
-	OperationUpdTsFrom int    `json:"operation_upd_ts_from"` // doubt ask for Sven
-	OperationUpdTsTo   int    `json:"operation_upd_ts_to"`   // doubt ask for Sven
-	WalletEid          int    `json:"wallet_eid"`
-	WalletGroupEid     int    `json:"wallet_group_eid"`
-	WalletId           int    `json:"wallet_id"`
+	WalletID                  int    `json:"wallet_id"`
+	OperationID               int    `json:"operation_id"`
+	OperationAmount           int    `json:"operation_amount"`
+	OperationTotalAmount      int    `json:"operation_tamount"`
+	OperationFee              int    `json:"operation_fee"`
+	OperationDescription      string `json:"operation_desc"`
+	OperationExternalID       int    `json:"operation_eid"`
+	OperationExternalTXID     int    `json:"operation_etxid"`
+	OperationTimestamp        int    `json:"operation_ts"`
+	OperationUpdatedTimestamp int    `json:"operation_upd_ts"`
+	OperationConfirmations    int    `json:"operation_conf"`
+	OperationConfRequired     int    `json:"operation_confreq"`
+	DestinationTypeData       string `json:"dest_type_data"`
+	OperationInfo             string `json:"operation_info"`
+	OperationStatus           string `json:"operation_status"`
+	OperationType             string `json:"operation_type"`
+	DirectionType             string `json:"direction_type"`
 }
 type OperationPayload struct {
 	DestType           string `json:"dest_type,omitempty"`      // types: in,out,intra
@@ -42,7 +47,8 @@ type OperationPayload struct {
 	OperationUpdTsTo   int    `json:"operation_upd_ts_to,omitempty"`   // doubt ask for Sven
 	WalletEid          int    `json:"wallet_eid,omitempty"`
 	WalletGroupEid     int    `json:"wallet_group_eid,omitempty"`
-	WalletId           int    `json:"wallet_id,omitempty"`
+	WalletID           int    `json:"wallet_id,omitempty"`
+	OperationID        int    `json:"operation_id"`
 }
 
 type OperationResult struct {
