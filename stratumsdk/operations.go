@@ -3,6 +3,9 @@ package stratumsdk
 import (
 	"encoding/json"
 	"fmt"
+	"log"
+
+	"github.com/evzpav/stratum-sdk-go/stratumsdk"
 )
 
 type Operations struct {
@@ -17,28 +20,28 @@ type FeeData struct {
 }
 
 type OperationData struct {
-	WalletId               int             `json:"wallet_id"`
-	OperationId            int             `json:"operation_id"`
-	OperationAmount        float64         `json:"operation_amount"`
-	OperationTotalAmount   float64         `json:"operation_tamount"`
-	OperationFee           float64         `json:"operation_fee"`
-	OperationDescription   string          `json:"operation_desc"`
-	OperationExternalId    int             `json:"operation_eid"`
-	OperationExternalTXId  string          `json:"operation_etxid"`
-	OperationTs            int             `json:"operation_ts"`
-	OperationUpdatedTs     int             `json:"operation_upd_ts"`
-	OperationConfirmations int             `json:"operation_conf"`
-	OperationConfRequired  int             `json:"operation_confreq"`
-	DestinationTypeData    DestinationData `json:"dest_type_data"`
-	OperationInfo          string          `json:"operation_info"`
-	OperationStatus        string          `json:"operation_status"` //"in:new,processing,done,failed"
-	OperationType          string          `json:"operation_type"`   //"in:deposit,withdraw,transfer"
-	DirectionType          string          `json:"direction_type"`   //"in:in,out,intra"
-	WalletEid              int             `json:"wallet_eid"`
-	Currency               string          `json:"currency"`
-	CurrencyUnit           string          `json:"currency_unit"`
-	CurrencyType           string          `json:"currency_type"`
-	DestinationType        string          `json:"dest_type"`
+	WalletId               int     `json:"wallet_id"`
+	OperationId            int     `json:"operation_id"`
+	OperationAmount        float64 `json:"operation_amount"`
+	OperationTotalAmount   float64 `json:"operation_tamount"`
+	OperationFee           float64 `json:"operation_fee"`
+	OperationDescription   string  `json:"operation_desc"`
+	OperationExternalId    int     `json:"operation_eid"`
+	OperationExternalTXId  string  `json:"operation_etxid"`
+	OperationTs            int     `json:"operation_ts"`
+	OperationUpdatedTs     int     `json:"operation_upd_ts"`
+	OperationConfirmations int     `json:"operation_conf"`
+	OperationConfRequired  int     `json:"operation_confreq"`
+	DestinationTypeData    string  `json:"dest_type_data"`
+	OperationInfo          string  `json:"operation_info"`
+	OperationStatus        string  `json:"operation_status"` //"in:new,processing,done,failed"
+	OperationType          string  `json:"operation_type"`   //"in:deposit,withdraw,transfer"
+	DirectionType          string  `json:"direction_type"`   //"in:in,out,intra"
+	WalletEid              int     `json:"wallet_eid"`
+	Currency               string  `json:"currency"`
+	CurrencyUnit           string  `json:"currency_unit"`
+	CurrencyType           string  `json:"currency_type"`
+	DestinationType        string  `json:"dest_type"`
 }
 
 type DestinationData struct {
@@ -109,6 +112,15 @@ func (o *Operations) List(payload *OperationPayload) (*[]OperationData, *ApiErro
 	if err != nil {
 		return nil, nil, err
 	}
+
+	for _, item := range result.Data {
+		destType := &stratumsdk.DestinationData{}
+		err := json.Unmarshal([]byte(item.DestinationTypeData), destType)
+		if err != nil {
+			log.Panic(err)
+		}
+	}
+
 	return &result.Data, apiErr, nil
 
 }
