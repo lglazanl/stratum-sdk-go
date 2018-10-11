@@ -6,9 +6,13 @@ import (
 
 type WalletAddressData struct {
 	WalletAddressEid   int    `json:"wallet_address_eid"`
-	WalletId           int    `json:"wallet_id"`
+	WalletEid          int    `json:"wallet_eid"`
 	WalletAddressLabel string `json:"wallet_address_label"`
 	WalletAddress      string `json:"wallet_address"`
+	CurrencyName       string `json:"currency_name"`
+	Currency           string `json:"currency"`
+	WalletLabel        string `json:"wallet_label"`
+	WalletBalance      string `json:"wallet_balance"`
 }
 
 type WalletsAddressesListPayload struct {
