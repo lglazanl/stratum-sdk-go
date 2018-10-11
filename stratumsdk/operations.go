@@ -4,8 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-
-	"github.com/evzpav/stratum-sdk-go/stratumsdk"
 )
 
 type Operations struct {
@@ -114,7 +112,7 @@ func (o *Operations) List(payload *OperationPayload) (*[]OperationData, *ApiErro
 	}
 
 	for _, item := range result.Data {
-		destType := &stratumsdk.DestinationData{}
+		destType := &DestinationData{}
 		err := json.Unmarshal([]byte(item.DestinationTypeData), destType)
 		if err != nil {
 			log.Panic(err)
