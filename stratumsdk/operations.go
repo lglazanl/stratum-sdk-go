@@ -3,7 +3,6 @@ package stratumsdk
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 )
 
 type Operations struct {
@@ -58,7 +57,6 @@ type OperationPayload struct {
 	WalletEid          int    `json:"wallet_eid,omitempty"`
 	WalletGroupEid     int    `json:"wallet_group_eid,omitempty"`
 	WalletId           int    `json:"wallet_id,omitempty"`
-	OperationId        int    `json:"operation_id"`
 }
 
 type OperationResult struct {
@@ -111,13 +109,13 @@ func (o *Operations) List(payload *OperationPayload) (*[]OperationData, *ApiErro
 		return nil, nil, err
 	}
 
-	for _, item := range result.Data {
-		destType := &DestinationData{}
-		err := json.Unmarshal([]byte(item.DestinationTypeData), destType)
-		if err != nil {
-			log.Panic(err)
-		}
-	}
+	// for _, item := range result.Data {
+	// 	destType := &DestinationData{}
+	// 	err := json.Unmarshal([]byte(item.DestinationTypeData), destType)
+	// 	if err != nil {
+	// 		log.Panic(err)
+	// 	}
+	// }
 
 	return &result.Data, apiErr, nil
 
