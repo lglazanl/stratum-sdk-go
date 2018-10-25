@@ -17,18 +17,32 @@ type FeeData struct {
 }
 
 type OperationData struct {
-	DestType           string `json:"dest_type"`      // types: in,out,intra
-	DirectionType      string `json:"direction_type"` //types in,out,intra
-	OperationEid       int    `json:"operation_eid"`
-	OperationStatus    string `json:"operation_status"`      // new,processing,done,failed
-	OperationTsFrom    int    `json:"operation_ts_from"`     //  doubt ask for Sven
-	OperationTsTo      int    `json:"operation_ts_to"`       // doubt ask for Sven
-	OperationType      string `json:"operation_type"`        // types: deposit,withdraw,transfer"
-	OperationUpdTsFrom int    `json:"operation_upd_ts_from"` // doubt ask for Sven
-	OperationUpdTsTo   int    `json:"operation_upd_ts_to"`   // doubt ask for Sven
-	WalletEid          int    `json:"wallet_eid"`
-	WalletGroupEid     int    `json:"wallet_group_eid"`
-	WalletId           int    `json:"wallet_id"`
+	WalletId               int     `json:"wallet_id"`
+	OperationId            int     `json:"operation_id"`
+	OperationAmount        float64 `json:"operation_amount"`
+	OperationTotalAmount   float64 `json:"operation_tamount"`
+	OperationFee           float64 `json:"operation_fee"`
+	OperationDescription   string  `json:"operation_desc"`
+	OperationExternalId    int     `json:"operation_eid"`
+	OperationExternalTXId  string  `json:"operation_etxid"`
+	OperationTs            int     `json:"operation_ts"`
+	OperationUpdatedTs     int     `json:"operation_upd_ts"`
+	OperationConfirmations int     `json:"operation_conf"`
+	OperationConfRequired  int     `json:"operation_confreq"`
+	DestinationTypeData    string  `json:"dest_type_data"`
+	OperationInfo          string  `json:"operation_info"`
+	OperationStatus        string  `json:"operation_status"` //"in:new,processing,done,failed"
+	OperationType          string  `json:"operation_type"`   //"in:deposit,withdraw,transfer"
+	DirectionType          string  `json:"direction_type"`   //"in:in,out,intra"
+	WalletEid              int     `json:"wallet_eid"`
+	Currency               string  `json:"currency"`
+	CurrencyUnit           string  `json:"currency_unit"`
+	CurrencyType           string  `json:"currency_type"`
+	DestinationType        string  `json:"dest_type"`
+}
+
+type DestinationData struct {
+	WalletAddress string `json:"wallet_address"`
 }
 type OperationPayload struct {
 	DestType           string `json:"dest_type,omitempty"`      // types: in,out,intra
@@ -46,6 +60,10 @@ type OperationPayload struct {
 }
 
 type OperationResult struct {
+	Data OperationData `json:"data"`
+}
+
+type OperationListResult struct {
 	Data []OperationData `json:"data"`
 }
 
@@ -78,15 +96,40 @@ func (o *Operations) Fees(payload *FeePayload) (*[]FeeData, *ApiError, error) {
 
 }
 
-// List - list opearation in account
+// List - list operations in account
 func (o *Operations) List(payload *OperationPayload) (*[]OperationData, *ApiError, error) {
-	result := new(OperationResult)
+	result := new(OperationListResult)
 	payloadJSON, err := json.Marshal(payload)
 	if err != nil {
 		return nil, nil, err
 	}
 	fmt.Printf("%s", payloadJSON)
 	apiErr, err := o.client.call("operations", "list", payloadJSON, &result)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	// for _, item := range result.Data {
+	// 	destType := &DestinationData{}
+	// 	err := json.Unmarshal([]byte(item.DestinationTypeData), destType)
+	// 	if err != nil {
+	// 		log.Panic(err)
+	// 	}
+	// }
+
+	return &result.Data, apiErr, nil
+
+}
+
+// Get - get operation in account
+func (o *Operations) Get(payload *OperationPayload) (*OperationData, *ApiError, error) {
+	result := new(OperationResult)
+	payloadJSON, err := json.Marshal(payload)
+	if err != nil {
+		return nil, nil, err
+	}
+	fmt.Printf("%s", payloadJSON)
+	apiErr, err := o.client.call("operations", "get", payloadJSON, &result)
 	if err != nil {
 		return nil, nil, err
 	}
