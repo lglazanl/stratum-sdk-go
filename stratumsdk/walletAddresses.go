@@ -55,7 +55,7 @@ func (wa *WalletsAddresses) List(payload *WalletsAddressesListPayload) (*[]Walle
 	if err != nil {
 		return nil, nil, err
 	}
-	apiErr, err := wa.client.call("wallets", "list", payloadJSON, result)
+	apiErr, err := wa.client.call("walletAddresses", "list", payloadJSON, result)
 	if err != nil {
 		return nil, nil, err
 	}
