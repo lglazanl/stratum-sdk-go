@@ -17,28 +17,33 @@ type FeeData struct {
 }
 
 type OperationData struct {
-	WalletId               int     `json:"wallet_id"`
-	OperationId            int     `json:"operation_id"`
-	OperationAmount        float64 `json:"operation_amount"`
-	OperationTotalAmount   float64 `json:"operation_tamount"`
-	OperationFee           float64 `json:"operation_fee"`
-	OperationDescription   string  `json:"operation_desc"`
-	OperationExternalId    int     `json:"operation_eid"`
-	OperationExternalTXId  string  `json:"operation_etxid"`
-	OperationTs            int     `json:"operation_ts"`
-	OperationUpdatedTs     int     `json:"operation_upd_ts"`
-	OperationConfirmations int     `json:"operation_conf"`
-	OperationConfRequired  int     `json:"operation_confreq"`
-	DestinationTypeData    string  `json:"dest_type_data"`
-	OperationInfo          string  `json:"operation_info"`
-	OperationStatus        string  `json:"operation_status"` //"in:new,processing,done,failed"
-	OperationType          string  `json:"operation_type"`   //"in:deposit,withdraw,transfer"
-	DirectionType          string  `json:"direction_type"`   //"in:in,out,intra"
-	WalletEid              int     `json:"wallet_eid"`
-	Currency               string  `json:"currency"`
-	CurrencyUnit           string  `json:"currency_unit"`
-	CurrencyType           string  `json:"currency_type"`
-	DestinationType        string  `json:"dest_type"`
+	OperationId          int     `json:"Operation_id"`
+	WalletId             int     `json:"Wallet_id"`
+	OperationAmount      float64 `json:"Operation_amount"`
+	OperationTamount     float64 `json:"Operation_tamount"`
+	OperationFee         float64 `json:"Operation_fee"`
+	OperationDesc        string  `json:"Operation_desc"`
+	OperationEid         int     `json:"Operation_eid"`
+	OperationEtxid       string  `json:"Operation_etxid"`
+	OperationTs          int     `json:"Operation_ts"`
+	OperationUpdTs       int     `json:"Operation_upd_ts"`
+	OperationConf        int     `json:"Operation_conf"`
+	OperationConfreq     int     `json:"Operation_confreq"`
+	DestTypeData         string  `json:"dest_type_data"`
+	OperationInfo        string  `json:"Operation_info"`
+	CurrencyUsdtrate     int     `json:"Currency_usdtrate"`
+	OperationStatus      string  `json:"Operation_status"`  //"in:new,processing,done,failed"
+	OperationType        string  `json:"Operation_type"`    //"in:deposit,withdraw,transfer"
+	WalletEid            int     `json:"Wallet_eid"`
+	WalletGroupId        int     `json:"Wallet_group_id"`
+	WalletGroupEid       int     `json:"Wallet_group_eid"`
+	WalletLabel          string  `json:"Wallet_label"`
+	WalletType           string  `json:"Wallet_type"`
+	Currency             string  `json:"Currency"`
+	CurrencyUnit         string  `json:"Currency_unit"`
+	CurrencyType         string  `json:"Currency_type"`
+	DestType             string  `json:"dest_type"`        //"in:in,out,intra"
+	DirectionType        string  `json:"direction_type"`
 }
 
 type DestinationData struct {
