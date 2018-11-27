@@ -7,8 +7,8 @@ import (
 )
 
 const (
-	apiUser   = "apiUser"
-	apiSecret = "apiSecret"
+	apiUser   = "6GNsbF2j6NPW8RJsTwepLqtVxDLKb3med"
+	apiSecret = "HZkSBN4gKPk7bzKd59QcGTwnvxaeQteu"
 )
 
 func TestPing(t *testing.T) {
