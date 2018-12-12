@@ -26,8 +26,8 @@ type OperationData struct {
 	OperationDesc    string  `json:"Operation_desc"`
 	OperationEid     int     `json:"Operation_eid"`
 	OperationEtxid   string  `json:"Operation_etxid"`
-	OperationTs      int     `json:"Operation_ts"`
-	OperationUpdTs   int     `json:"Operation_upd_ts"`
+	OperationTs      int64   `json:"Operation_ts"`
+	OperationUpdTs   int64   `json:"Operation_upd_ts"`
 	OperationConf    int     `json:"Operation_conf"`
 	OperationConfreq int     `json:"Operation_confreq"`
 	DestTypeData     string  `json:"dest_type_data"`
@@ -55,11 +55,11 @@ type OperationPayload struct {
 	DirectionType      string `json:"direction_type,omitempty"` //types in,out,intra
 	OperationEid       int    `json:"operation_eid,omitempty"`
 	OperationStatus    string `json:"operation_status,omitempty"`      // new,processing,done,failed
-	OperationTsFrom    int    `json:"operation_ts_from,omitempty"`     //  doubt ask for Sven
-	OperationTsTo      int    `json:"operation_ts_to,omitempty"`       // doubt ask for Sven
+	OperationTsFrom    int64  `json:"operation_ts_from,omitempty"`     //  doubt ask for Sven
+	OperationTsTo      int64  `json:"operation_ts_to,omitempty"`       // doubt ask for Sven
 	OperationType      string `json:"operation_type,omitempty"`        // types: deposit,withdraw,transfer"
-	OperationUpdTsFrom int    `json:"operation_upd_ts_from,omitempty"` // doubt ask for Sven
-	OperationUpdTsTo   int    `json:"operation_upd_ts_to,omitempty"`   // doubt ask for Sven
+	OperationUpdTsFrom int64  `json:"operation_upd_ts_from,omitempty"` // doubt ask for Sven
+	OperationUpdTsTo   int64  `json:"operation_upd_ts_to,omitempty"`   // doubt ask for Sven
 	WalletEid          int    `json:"wallet_eid,omitempty"`
 	WalletGroupEid     int    `json:"wallet_group_eid,omitempty"`
 	WalletId           int    `json:"wallet_id,omitempty"`
