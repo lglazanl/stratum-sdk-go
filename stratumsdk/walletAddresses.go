@@ -16,7 +16,7 @@ type WalletAddressData struct {
 }
 
 type WalletsAddressesListPayload struct {
-	WalletAddressEid string `json:"wallet_address_eid"`
+	WalletAddressEid int64  `json:"wallet_address_eid"`
 	WalletId         int    `json:"wallet_id"`
 	WalletEid        int    `json:"wallet_eid"`
 	Currency         string `json:"currency"`
