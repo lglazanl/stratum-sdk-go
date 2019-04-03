@@ -63,6 +63,7 @@ type OperationPayload struct {
 	WalletEid          int    `json:"wallet_eid,omitempty"`
 	WalletGroupEid     int    `json:"wallet_group_eid,omitempty"`
 	WalletId           int    `json:"wallet_id,omitempty"`
+	Currency           string `json:"Currency"`
 }
 
 type OperationResult struct {
