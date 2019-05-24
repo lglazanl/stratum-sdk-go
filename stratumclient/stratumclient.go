@@ -67,10 +67,10 @@ func (c *StratumClient) CallRestApi(mod string, action string, payload []byte, d
 
 	// create http client, unlimited timeouts are not an option !!
 	var netTransport = &http.Transport{
-		Dial:                (&net.Dialer{Timeout: 20 * time.Second}).Dial,
-		TLSHandshakeTimeout: 5 * time.Second,
+		Dial:                (&net.Dialer{Timeout: 50 * time.Second}).Dial,
+		TLSHandshakeTimeout: 50 * time.Second,
 	}
-	var netClient = &http.Client{Timeout: time.Second * 30, Transport: netTransport}
+	var netClient = &http.Client{Timeout: time.Second * 60, Transport: netTransport}
 
 	// send and decode output
 	url := concat(c.endpoint, mod, "/", action)
